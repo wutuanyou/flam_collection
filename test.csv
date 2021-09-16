@@ -1,0 +1,4 @@
+Sena_NO,startTime,endTime,application_id,campaign_id,creative_id,country_id,platform_id,publisher_id
+1,2021-07-01,2021-07-04,"5b324b8f1eb63f5c8201c517,5c0e6455eed9f60016acc3e9","5d8a7e907666bd216bf429ef,5b36662c2516f12a6019f744",5daf74f0d58db54e7058205a,"JP,CA","iOS,android",
+2,2021-07-02,2021-07-05,"5b324b8f1eb63f5c8201c517,5c0e6455eed9f60016acc3e1","5d8a7e907666bd216bf429ef,5b36662c2516f12a6019f745",5daf74f0d58db54e7058206a,"JP,CA","iOS,android",
+3,2021-07-03,2021-07-06,"5b324b8f1eb63f5c8201c517,5c0e6455eed9f60016acc3e1","5d8a7e907666bd216bf429ef,5b36662c2516f12a6019f746",5daf74f0d58db54e7058207a,"JP,CA","iOS,android",
