@@ -8805,7 +8805,7 @@
 							}
 						],
 						"url": {
-							"raw": "{{host}}{{path}}?start={{startTime}}&end={{endTimeAPI}}&aggregates=views,clicks,installs,spend,eCPM,IPM,eCPI,CTR,IR,d7rev,d7roas,d7ret&applicationId={{applicationId}}&dimensions=country&campaignId={{campaignId}}&country=US,BR&siteId={{siteId}}",
+							"raw": "{{host}}{{path}}?start={{startTime}}&end={{endTimeAPI}}&aggregates=views,clicks,installs,spend,eCPM,IPM,eCPI,CTR,IR,d7rev,d7roas,d7ret&applicationId={{application_id}}&dimensions=country&campaignId={{campaignId}}&country=US,BR&siteId={{siteId}}",
 							"host": [
 								"{{host}}{{path}}"
 							],
@@ -8825,7 +8825,7 @@
 								},
 								{
 									"key": "applicationId",
-									"value": "{{applicationId}}"
+									"value": "{{application_id}}"
 								},
 								{
 									"key": "dimensions",
@@ -8943,7 +8943,7 @@
 							}
 						],
 						"url": {
-							"raw": "{{host}}{{path}}?start={{startTime}}&end={{endTimeAPI}}&aggregates=views,clicks,installs,spend,eCPM,IPM,eCPI,CTR,IR,d7rev,d7roas,d7ret&applicationId=5b324b8f1eb63f5c8201c517,5c0e6455eed9f60016acc3e9&dimensions=application&campaignId=5d8a7e907666bd216bf429ef,5b36662c2516f12a6019f744&country=US,BR&siteId=5efcadb6e3c396000176bbdb,590b5df4004ccfdd3b000a35",
+							"raw": "{{host}}{{path}}?start={{startTime}}&end={{endTimeAPI}}&aggregates=views,clicks,installs,spend,eCPM,IPM,eCPI,CTR,IR,d7rev,d7roas,d7ret&applicationId={{application_id}}&dimensions=application&campaignId={{campaignId}}&country={{country_api}}&siteId={{siteId}}",
 							"host": [
 								"{{host}}{{path}}"
 							],
@@ -8963,7 +8963,7 @@
 								},
 								{
 									"key": "applicationId",
-									"value": "5b324b8f1eb63f5c8201c517,5c0e6455eed9f60016acc3e9"
+									"value": "{{application_id}}"
 								},
 								{
 									"key": "dimensions",
@@ -8972,15 +8972,15 @@
 								},
 								{
 									"key": "campaignId",
-									"value": "5d8a7e907666bd216bf429ef,5b36662c2516f12a6019f744"
+									"value": "{{campaignId}}"
 								},
 								{
 									"key": "country",
-									"value": "US,BR"
+									"value": "{{country_api}}"
 								},
 								{
 									"key": "siteId",
-									"value": "5efcadb6e3c396000176bbdb,590b5df4004ccfdd3b000a35"
+									"value": "{{siteId}}"
 								}
 							]
 						}
@@ -9388,7 +9388,7 @@
 					"        var mad_appid = data.application_id",
 					"        var initMadParamTool = eval(globals.initMadParamTool)",
 					"        var mad_appid = initMadParamTool(mad_appid)",
-					"        console.log(mad_appid)",
+					"        //console.log(mad_appid)",
 					"        pm.collectionVariables.set(\"mad_appid\",mad_appid)",
 					"        pm.collectionVariables.get(\"mad_appid\",mad_appid)",
 					"    }",
@@ -9465,7 +9465,7 @@
 					"    try{    ",
 					"        var hasResponse = postman.getResponseHeader('Content-Type')?true:false;    ",
 					"    if(!hasResponse) tests[\"The request is timeout,pls check the service.The other cases will be passed\"] = false;",
-					"    else if(hasResponse) tests[`[INFO]Request INFO(timeout not parse)`] = true;}",
+					"    else if(hasResponse) tests[`[INFO]Request is not timeout,print the request INFO(timeout not parse)`] = true;}",
 					"    catch(e){console.log(e)}",
 					"})",
 					"",
@@ -9475,7 +9475,7 @@
 					"        var hasResponse = postman.getResponseHeader('Content-Type')?true:false;    ",
 					"    if(!hasResponse) tests[\"The request is timeout,pls check the service.The other cases will be passed\"] = false;",
 					"    else if(hasResponse) ",
-					"    tests[`[INFO]Response INFO(timeout not parse)`] = true;}",
+					"    tests[`[INFO]Request is not time,print the responseBody Response INFO(timeout not parse)`] = true;}",
 					"    catch(e){console.log(e)}",
 					"})",
 					"",
@@ -9629,8 +9629,11 @@
 					"",
 					"        }else{",
 					"            if(tru_data!=\"\"){",
+					"",
 					"                result = false",
+					"",
 					"            }else{",
+					"",
 					"                result = true",
 					"            }",
 					"        tests[`[INFO]validate the madmenAPI data`] = result              ",
@@ -9645,9 +9648,10 @@
 					"    var expectStrData = pm.globals.get(\"expectStrData\",expectStrData)",
 					"    //console.log(expectStrData)",
 					"    var tru_data = JSON.parse(responseBody)",
+					"",
 					"    if(tru_data.hasOwnProperty(\"errors\")){",
 					"",
-					"        tests[`[INFO]the madmenAPI is timeout:${tru_data}`] = false",
+					"        tests[`[INFO]the madmenAPI is timeout:${JSON.stringify(tru_data)}`] = false",
 					"",
 					"    }else{",
 					"        tru_data = tru_data['data']['reportingDetail']['data']",
